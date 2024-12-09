@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ponte en contacto con Daniel Esteban Pereira Rosas.">
+  <title>Contacto | Daniel Esteban Pereira Rosas</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-gray-900 text-white">
+  <header class="fixed w-full bg-gray-800 shadow-lg z-50">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+      <a href="index.html" class="text-2xl font-bold">Daniel E. Pereira</a>
+      <ul class="flex space-x-4">
+        <li><a href="index.html" class="hover:text-blue-400">Inicio</a></li>
+        <li><a href="sobre.html" class="hover:text-blue-400">Sobre mí</a></li>
+        <li><a href="habilidades.html" class="hover:text-blue-400">Habilidades</a></li>
+        <li><a href="proyectos.html" class="hover:text-blue-400">Proyectos</a></li>
+        <li><a href="referencias.html" class="hover:text-blue-400">Referencias</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container mx-auto mt-20 p-6">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">Contacto</h1>
+    <form action="mailto:daniel@example.com" method="post" enctype="text/plain" class="space-y-4">
+      <div>
+        <label for="name" class="block text-sm">Nombre</label>
+        <input type="text" id="name" name="name" required class="w-full px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      <div>
+        <label for="email" class="block text-sm">Correo electrónico</label>
+        <input type="email" id="email" name="email" required class="w-full px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      <div>
+        <label for="subject" class="block text-sm">Asunto</label>
+        <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      <div>
+        <label for="message" class="block text-sm">Mensaje</label>
+        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+      </div>
+      <button type="submit" class="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all">Enviar mensaje</button>
+    </form>
+    <div class="mt-6">
+      <a href="https://wa.me/1234567890" class="inline-block bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 transition-all">Contáctame por WhatsApp</a>
+    </div>
+    <div class="mt-4">
+      <a href="https://github.com/daniel" class="inline-block bg-gray-800 text-white px-6 py-2 rounded-md hover:bg-gray-700 transition-all">Ver mi GitHub</a>
+    </div>
+  </main>
+</body>
+</html>
