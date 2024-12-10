@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Regresiva Avanzada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./tail.config.js" defer></script>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
+</head>
+<body class="overflow-hidden">
+    <div id="countdown-container" class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden transition-all duration-1000 ease-in-out">
+        <div id="stars-background" class="absolute inset-0 z-0"></div>
+        
+        <div id="dynamic-messages" class="absolute top-10 text-white text-2xl font-bold text-center z-50 opacity-0 transition-opacity duration-500"></div>
+        
+        <div class="z-10 text-center">
+            <h1 id="main-title" class="text-4xl md:text-6xl font-extrabold text-white mb-8 animate-pulse">
+                Cuenta Regresiva para el Próximo Año
+            </h1>
+            
+            <div id="countdown-grid" class="grid grid-cols-4 gap-4 md:gap-8">
+                <div id="days" class="time-unit bg-white/10 rounded-xl p-4 text-center" aria-live="polite">
+                    <div class="text-5xl font-bold text-cyan-300" aria-label="Días restantes">00</div>
+                    <div class="text-sm text-white mt-2">Días</div>
+                </div>
+                <div id="hours" class="time-unit bg-white/10 rounded-xl p-4 text-center" aria-live="polite">
+                    <div class="text-5xl font-bold text-cyan-300" aria-label="Horas restantes">00</div>
+                    <div class="text-sm text-white mt-2">Horas</div>
+                </div>
+                <div id="minutes" class="time-unit bg-white/10 rounded-xl p-4 text-center" aria-live="polite">
+                    <div class="text-5xl font-bold text-cyan-300" aria-label="Minutos restantes">00</div>
+                    <div class="text-sm text-white mt-2">Minutos</div>
+                </div>
+                <div id="seconds" class="time-unit bg-white/10 rounded-xl p-4 text-center" aria-live="polite">
+                    <div class="text-5xl font-bold text-cyan-300" aria-label="Segundos restantes">00</div>
+                    <div class="text-sm text-white mt-2">Segundos</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="timezone-selector" class="absolute bottom-10 right-10">
+            <select id="timezone-select" class="bg-white/20 text-white p-2 rounded-lg">
+                <option value="local">Zona Horaria Local</option>
+                <option value="UTC">UTC</option>
+                <option value="America/New_York">New York</option>
+                <option value="Europe/London">Londres</option>
+                <option value="Asia/Tokyo">Tokyo</option>
+            </select>
+        </div>
+    </div>
+
+    <audio id="new-year-audio" class="hidden">
+        <source src="https://www.soundjay.com/misc/sounds/fireworks-1.mp3" type="audio/mpeg">
+    </audio>
+
+</body>
+</html>

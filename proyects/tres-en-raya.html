@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres en raya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #bf25fca4 100%);
+        }
+        .square {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .square:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+        .winning-square {
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="bg-white/10 backdrop-blur-lg rounded-xl p-8 shadow-xl">
+        <h1 class="text-white text-4xl mb-6 text-center font-bold">Tres en raya <br> 1vs1</h1>
+        
+        <div id="status" class="text-white text-xl mb-4 text-center h-8">
+            Turno de X
+        </div>
+
+        <div id="game-board" class="grid grid-cols-3 gap-4 mb-6">
+            <div class="square bg-purple-700 w-24 h-24 flex items-center justify-center text-5xl text-white cursor-pointer rounded-lg" data-index="0"></div>
+            <div class="square bg-purple-700 w-24 h-24 flex items-center justify-center text-5xl text-white cursor-pointer rounded-lg" data-index="1"></div>
+            <div class="square bg-purple-700 w-24 h-24 flex items-center justify-center text-5xl text-white cursor-pointer rounded-lg" data-index="2"></div>
+            <div class="square bg-purple-700 w-24 h-24 flex items-center justify-center text-5xl text-white cursor-pointer rounded-lg" data-index="3"></div>
+            <div class="square bg-purple-700 w-24 h-24 flex items-center justify-center text-5xl text-white cursor-pointer rounded-lg" data-index="4"></div>
+            <div class="square bg-purple-700 w-24 h-24 flex items-center justify-center text-5xl text-white cursor-pointer rounded-lg" data-index="5"></div>
+            <div class="square bg-purple-700 w-24 h-24 flex items-center justify-center text-5xl text-white cursor-pointer rounded-lg" data-index="6"></div>
+            <div class="square bg-purple-700 w-24 h-24 flex items-center justify-center text-5xl text-white cursor-pointer rounded-lg" data-index="7"></div>
+            <div class="square bg-purple-700 w-24 h-24 flex items-center justify-center text-5xl text-white cursor-pointer rounded-lg" data-index="8"></div>
+        </div>
+
+        <div class="flex justify-center space-x-4">
+            <button id="restart-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+                Reiniciar Juego
+            </button>
+            <button id="score-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+                Marcador
+            </button>
+        </div>
+
+        <div id="score-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 rounded-md">
+            <div class="bg-white p-8 rounded-lg text-center">
+                <h2 class="text-2xl font-bold mb-4">Marcador</h2>
+                <div class="flex justify-between mb-4">
+                    <span class="text-xl">X Wins:</span>
+                    <span id="x-score" class="text-xl font-bold">0</span>
+                </div>
+                <div class="flex justify-between mb-4">
+                    <span class="text-xl">O Wins:</span>
+                    <span id="o-score" class="text-xl font-bold">0</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-xl">Empates:</span>
+                    <span id="draw-score" class="text-xl font-bold">0</span>
+                </div>
+                <button id="close-score-btn" class="mt-4 bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class TicTacToe {
+            constructor() {
+                this.board = ['', '', '', '', '', '', '', '', ''];
+                this.currentPlayer = 'X';
+                this.gameActive = true;
+                this.scores = {
+                    X: 0,
+                    O: 0,
+                    draws: 0
+                };
+
+                this.winningCombinations = [
+                    [0, 1, 2], [3, 4, 5], [6, 7, 8],  // Rows
+                    [0, 3, 6], [1, 4, 7], [2, 5, 8],  // Columns
+                    [0, 4, 8], [2, 4, 6]  // Diagonals
+                ];
+
+                this.initializeEventListeners();
+                this.updateScoreDisplay();
+            }
+
+            initializeEventListeners() {
+                const squares = document.querySelectorAll('.square');
+                const restartBtn = document.getElementById('restart-btn');
+                const scoreBtn = document.getElementById('score-btn');
+                const closeScoreBtn = document.getElementById('close-score-btn');
+                const scoreModal = document.getElementById('score-modal');
+
+                squares.forEach(square => {
+                    square.addEventListener('click', (e) => this.handleSquareClick(e));
+                });
+
+                restartBtn.addEventListener('click', () => this.restartGame());
+                scoreBtn.addEventListener('click', () => {
+                    scoreModal.classList.remove('hidden');
+                    scoreModal.classList.add('flex');
+                });
+                closeScoreBtn.addEventListener('click', () => {
+                    scoreModal.classList.remove('flex');
+                    scoreModal.classList.add('hidden');
+                });
+            }
+
+            handleSquareClick(event) {
+                const clickedSquare = event.target;
+                const index = clickedSquare.dataset.index;
+
+                if (this.board[index] !== '' || !this.gameActive) return;
+
+                this.board[index] = this.currentPlayer;
+                clickedSquare.textContent = this.currentPlayer;
+                
+                if (this.checkWinner()) {
+                    this.endGame(false);
+                } else if (this.isDraw()) {
+                    this.endGame(true);
+                } else {
+                    this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+                    this.updateStatus();
+                }
+            }
+
+            checkWinner() {
+                return this.winningCombinations.some(combination => {
+                    return combination.every(index => {
+                        return this.board[index] === this.currentPlayer;
+                    });
+                });
+            }
+
+            isDraw() {
+                return this.board.every(square => square !== '');
+            }
+
+            endGame(draw) {
+                this.gameActive = false;
+                const statusElement = document.getElementById('status');
+
+                if (draw) {
+                    statusElement.textContent = 'Empate!';
+                    this.scores.draws++;
+                } else {
+                    statusElement.textContent = `${this.currentPlayer} Gana!`;
+                    this.scores[this.currentPlayer]++;
+                    
+                    // Highlight winning combination
+                    this.highlightWinningCombination();
+                }
+
+                this.updateScoreDisplay();
+            }
+
+            highlightWinningCombination() {
+                this.winningCombinations.forEach(combination => {
+                    if (combination.every(index => this.board[index] === this.currentPlayer)) {
+                        combination.forEach(index => {
+                            document.querySelector(`[data-index="${index}"]`).classList.add('winning-square');
+                        });
+                    }
+                });
+            }
+
+            restartGame() {
+                this.board = ['', '', '', '', '', '', '', '', ''];
+                this.gameActive = true;
+                this.currentPlayer = 'X';
+
+                const squares = document.querySelectorAll('.square');
+                squares.forEach(square => {
+                    square.textContent = '';
+                    square.classList.remove('winning-square');
+                });
+
+                this.updateStatus();
+            }
+
+            updateStatus() {
+                const statusElement = document.getElementById('status');
+                statusElement.textContent = `Turno de ${this.currentPlayer}`;
+            }
+
+            updateScoreDisplay() {
+                document.getElementById('x-score').textContent = this.scores.X;
+                document.getElementById('o-score').textContent = this.scores.O;
+                document.getElementById('draw-score').textContent = this.scores.draws;
+            }
+        }
+
+        // Initialize the game
+        const game = new TicTacToe();
+    </script>
+</body>
+</html>
