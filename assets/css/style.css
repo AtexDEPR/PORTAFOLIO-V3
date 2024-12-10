@@ -53,4 +53,12 @@ body {
   
 
   /* src/styles.css */
-
+  @media (max-width: 1024px) {
+    #navMenu {
+      display: none;
+    }
+  
+    #navMenu.active {
+      display: block;
+    }
+  }
