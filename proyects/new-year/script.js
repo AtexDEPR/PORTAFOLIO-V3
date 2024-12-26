@@ -13,6 +13,8 @@ class NewYearCountdown {
             "Prepárate para grandes cambios",
             "Tu mejor versión está por venir"
         ];
+        this.customAudio = document.getElementById('custom-audio');  // El audio descargado
+        this.checkMusicLoop();
     }
 
     initializeElements() {
@@ -30,6 +32,7 @@ class NewYearCountdown {
 
     setupEventListeners() {
         this.timezoneSelect.addEventListener('change', () => this.updateCountdown());
+        this.setupTestFireworksButton();  // Asegúrate de que este método sea llamado
     }
 
     createStars() {
@@ -90,10 +93,35 @@ class NewYearCountdown {
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
+        // Reproducir el audio 4:30 antes del año nuevo
+        this.checkAudioForFinalCountdown(difference);
+
         this.updateTimeUnit('days', days);
         this.updateTimeUnit('hours', hours);
         this.updateTimeUnit('minutes', minutes);
         this.updateTimeUnit('seconds', seconds);
+    }
+
+    checkAudioForFinalCountdown(difference) {
+        const finalCountdownTime = 4.5 * 60 * 1000;  // 4:30 minutos en milisegundos
+
+        if (difference <= finalCountdownTime && !this.audioPlayed) {
+            this.customAudio.play();
+            this.audioPlayed = true;  // Evita que el audio se reproduzca varias veces
+        }
+    }
+
+    checkMusicLoop() {
+        const now = new Date();
+        const nowInColombia = new Date(now.toLocaleString("en-US", { timeZone: "America/Bogota" }));
+        const nextYear = nowInColombia.getFullYear() + 1;
+        const newYear = new Date(`January 1, ${nextYear} 00:00:00 GMT-0500`);
+        const daysRemaining = Math.floor((newYear - nowInColombia) / (1000 * 60 * 60 * 24));
+
+        if (daysRemaining <= 15) {
+            this.newYearAudio.src = "https://www.youtube.com/embed/thtfkZZ69Ic?autoplay=1&loop=1&playlist=thtfkZZ69Ic";
+            this.newYearAudio.play();
+        }
     }
 
     celebrateNewYear() {
@@ -118,12 +146,10 @@ class NewYearCountdown {
         for (let i = 0; i < 20; i++) {
             const firework = document.createElement('div');
             firework.classList.add(
-                'absolute', 'bg-white', 'rounded-full',
-                'opacity-0', 'animate-firework'
+                'absolute', 'text-4xl', 'opacity-0', 'animate-firework'
             );
 
-            firework.style.width = `${Math.random() * 10}px`;
-            firework.style.height = firework.style.width;
+            firework.textContent = '🎆'; // Emoji de fuegos artificiales
             firework.style.left = `${Math.random() * 100}%`;
             firework.style.top = `${Math.random() * 100}%`;
             firework.style.animationDelay = `${Math.random() * 2}s`;
@@ -136,6 +162,15 @@ class NewYearCountdown {
         setTimeout(() => {
             document.body.removeChild(fireworksContainer);
         }, 5000);
+    }
+
+    setupTestFireworksButton() {
+        const testFireworksBtn = document.getElementById('test-fireworks-btn');
+        if (testFireworksBtn) {
+            testFireworksBtn.addEventListener('click', () => this.createFireworks());
+        } else {
+            console.error('Botón de prueba de fuegos artificiales no encontrado');
+        }
     }
 }
 
