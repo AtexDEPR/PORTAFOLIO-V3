@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Metadatos básicos -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tetris</title>
+  
+  <!-- Hojas de estilo -->
+  <link rel="stylesheet" href="./styles.css"> <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css"> <!-- Framework Materialize -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"> <!-- Iconos de Font Awesome -->
+  
+  <!-- Script principal del juego -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  
+  <audio id="background-audio" src="./5 Minute Timer Relaxing Music Lofi Fish Background.mp3" autoplay hidden></audio>
+
+<script>
+  const audio = document.getElementById('background-audio');
+  audio.volume = 0.1; // Establece el volumen al 20% (valor entre 0 y 1)
+</script>
+
+
+  <div class="wrapper">
+    <!-- Modal de Nuevo Juego -->
+    <div id="newGame" class="modal">
+        <div class="modal-content">
+          <h4>Tetris</h4>
+          <button onclick="newGame()" id="newGameBtn" class="modal-close waves-effect waves-light btn" style="width:250px">Nuevo Juego</button>
+        </div>
+    </div>
+
+    <!-- Modal de Pausa -->
+    <div id="pause" class="modal">
+        <div class="modal-content">
+          <h4>Juego en Pausa</h4>
+          <button onclick="pauseGame()" id="pauseBtn" class="modal-close waves-effect waves-light btn">Reanudar Juego</button>
+          <button onclick="newGame()" id="StartNewBtn" class="modal-close waves-effect waves-light btn">Iniciar Nuevo Juego</button>
+        </div>
+    </div>
+
+    <!-- Modal de Fin del Juego -->
+    <div id="gameOver" class="modal">
+        <div class="modal-content">
+          <h4>Fin del Juego</h4>
+          <div class="yourScore"></div>
+          <label for="name">Enviar tu Puntaje</label>
+          <br><br>
+          <form id="highScore">
+            <input type="text" id="name" maxlength="7" placeholder="nombre..." onfocus="this.placeholder = ''" autocomplete="off" required/>
+            <button type="submit" id="submit" class="waves-effect waves-light btn">Enviar</button>
+          </form>
+          <br>
+          <a onclick="newGame()" class="modal-close waves-effect waves-light btn">Iniciar Nuevo Juego</a>
+        </div>
+    </div>
+
+    <!-- Panel izquierdo - Puntuación y Récords -->
+    <div class="detailsLeft">
+      <div class="score"></div> <!-- Contenedor para la puntuación actual -->
+      <div class="level"></div> <!-- Contenedor para el nivel actual -->
+      <div class="highScores"></div> <!-- Contenedor para las puntuaciones más altas -->
+    </div>
+
+    <!-- Área principal del juego -->
+    <canvas class="tetris" width="240" height="400"></canvas>
+
+    <!-- Panel derecho - Pieza siguiente y Controles -->
+    <div class="detailsRight">
+        <canvas class="next" width="160" height="160"></canvas> <!-- Canvas para mostrar la siguiente pieza -->
+        <br>
+        <!-- Instrucciones de control -->
+        <div class="controls">
+          <p><i class="fas fa-arrow-left"></i> Mover Izquierda</p>
+          <p><i class="fas fa-arrow-right"></i> Mover Derecha</p>
+          <p><i class="fas fa-arrow-down"></i> Mover Abajo</p>
+          <p><i class="fas fa-arrow-up"></i> Rotar Derecha</p>
+          <p><span style="font-size : 18px">Q</span> Rotar Izquierda</p>
+          <p><span style="font-size : 18px">W</span> Rotar Derecha</p>
+          <p><span style="font-size: 18px">Esc</span> Pausar Juego</p>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <div class="footer">
+      <p>por <a href="https://github.com/AtexDEPR" rel="noopener" target="_blank"><i class="fab fa-github"></i> Daniel Pereira</a></p>
+    </div>
+  </div>
+
+  <!-- Scripts externos -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script> <!-- Materialize JS -->
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoséMusic</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Configuración adicional de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'spotify-black': '#121212',
+                        'spotify-dark': '#282828',
+                        'spotify-green': '#1DB954'
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-spotify-black text-white">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="w-64 bg-black flex-shrink-0">
+            <div class="p-6">
+                <div class="mb-8">
+                    <h1 class="text-2xl font-bold mb-4">JoséMusic</h1>
+                    <nav class="space-y-4">
+                        <a href="#" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fas fa-home w-6"></i>
+                            <span class="ml-4">Inicio</span>
+                        </a>
+                        <a href="#" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fas fa-search w-6"></i>
+                            <span class="ml-4">Buscar</span>
+                        </a>
+                        <a href="#" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                            <i class="fas fa-book w-6"></i>
+                            <span class="ml-4">Tu Biblioteca</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="mt-8">
+                    <button class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
+                        <div class="w-6 h-6 bg-gray-300 rounded-sm flex items-center justify-center text-black">
+                            <i class="fas fa-plus text-sm"></i>
+                        </div>
+                        <span>Crear playlist</span>
+                    </button>
+
+                    <div class="mt-4 space-y-2">
+                        <a href="#" class="block text-gray-300 hover:text-white transition-colors">Éxitos de José José</a>
+                        <a href="#" class="block text-gray-300 hover:text-white transition-colors">Baladas Románticas</a>
+                        <a href="#" class="block text-gray-300 hover:text-white transition-colors">Lo Mejor del Príncipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-auto bg-gradient-to-b from-blue-900 to-spotify-black">
+            <!-- Top Bar -->
+            <div class="sticky top-0 bg-transparent bg-opacity-95 px-8 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <button class="w-8 h-8 flex items-center justify-center rounded-full bg-black bg-opacity-70">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="w-8 h-8 flex items-center justify-center rounded-full bg-black bg-opacity-70">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div>
+                    <button class="px-8 py-2 rounded-full bg-white text-black font-bold hover:scale-105 transition-transform">
+                        Iniciar sesión
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="px-8 pb-28">
+                <h2 class="text-2xl font-bold mb-6">Bienvenido a JoséMusic</h2>
+                
+                <!-- Grid de canciones -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="songs-container">
+                    <!-- Las canciones se cargarán aquí dinámicamente -->
+                </div>
+
+                <h3 class="text-xl font-bold mt-8 mb-6">Reproducido recientemente</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="recent-songs">
+                    <!-- Las canciones recientes se cargarán aquí -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Player Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-spotify-dark h-24 border-t border-gray-900">
+        <div class="flex items-center justify-between h-full px-4">
+            <!-- Current Track Info -->
+            <div class="flex items-center w-1/4 min-w-[180px]">
+                <img id="current-song-image" src="/api/placeholder/56/56" alt="Album Cover" class="w-14 h-14 rounded">
+                <div class="ml-4">
+                    <h4 id="current-song-title" class="text-sm font-semibold">Selecciona una canción</h4>
+                    <p id="current-song-artist" class="text-xs text-gray-400">José José</p>
+                </div>
+                <button class="ml-4 text-gray-400 hover:text-white">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+
+            <!-- Player Controls -->
+            <div class="flex flex-col items-center max-w-[45%] w-full">
+                <div class="flex items-center space-x-6">
+                    <button class="text-gray-400 hover:text-white">
+                        <i class="fas fa-random"></i>
+                    </button>
+                    <button class="text-gray-400 hover:text-white" id="prev-button">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="w-8 h-8 flex items-center justify-center rounded-full bg-white text-black hover:scale-105 transition-transform" id="play-button">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="text-gray-400 hover:text-white" id="next-button">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                    <button class="text-gray-400 hover:text-white">
+                        <i class="fas fa-repeat"></i>
+                    </button>
+                </div>
+                <div class="w-full flex items-center space-x-2 mt-2">
+                    <span class="text-xs text-gray-400 min-w-[40px] text-right" id="current-time">0:00</span>
+                    <div class="w-full h-1 bg-gray-600 rounded-full cursor-pointer group">
+                        <div class="relative h-full">
+                            <div class="h-1 bg-white group-hover:bg-green-500 rounded-full" id="progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <span class="text-xs text-gray-400 min-w-[40px]" id="duration">0:00</span>
+                </div>
+            </div>
+
+            <!-- Volume Control -->
+            <div class="flex items-center justify-end w-1/4 space-x-4 min-w-[180px]">
+                <button class="text-gray-400 hover:text-white">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <div class="w-24 h-1 bg-gray-600 rounded-full cursor-pointer group">
+                    <div class="h-1 bg-white group-hover:bg-green-500 rounded-full" style="width: 50%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Estado global de la aplicación
+        const state = {
+            songs: [],
+            currentSongIndex: 0,
+            isPlaying: false,
+            audio: new Audio(),
+        };
+
+        // Funciones de la API
+        async function fetchSongs() {
+            try {
+                const response = await fetch('./api/app.json'); // Asegúrate de usar la ruta correcta
+                const data = await response.json();
+                state.songs = data.songs;
+                renderSongs();
+                renderRecentSongs();
+            } catch (error) {
+                console.error('Error fetching songs:', error);
+            }
+        }
+
+        // Funciones de renderizado
+        function renderSongs() {
+            const container = document.getElementById('songs-container');
+            container.innerHTML = state.songs.map((song, index) => `
+                <div class="p-4 bg-spotify-dark rounded-lg hover:bg-gray-700 transition-colors cursor-pointer group"
+                     onclick="playSong(${index})">
+                    <div class="relative">
+                        <img src="${song.coverUrl}" alt="${song.title}" class="w-full rounded-md mb-4">
+                        <button class="absolute bottom-6 right-2 w-10 h-10 bg-spotify-green rounded-full shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                            <i class="fas fa-play text-black"></i>
+                        </button>
+                    </div>
+                    <h3 class="font-semibold mb-1 truncate">${song.title}</h3>
+                    <p class="text-sm text-gray-400 truncate">${song.album}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderRecentSongs() {
+            const container = document.getElementById('recent-songs');
+            const recentSongs = state.songs.slice(0, 5);
+            container.innerHTML = recentSongs.map((song, index) => `
+                <div class="p-4 bg-spotify-dark rounded-lg hover:bg-gray-700 transition-colors cursor-pointer group"
+                     onclick="playSong(${index})">
+                    <div class="relative">
+                        <img src="${song.coverUrl}" alt="${song.title}" class="w-full rounded-md mb-4">
+                        <button class="absolute bottom-6 right-2 w-10 h-10 bg-spotify-green rounded-full shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                            <i class="fas fa-play text-black"></i>
+                        </button>
+                    </div>
+                    <h3 class="font-semibold mb-1 truncate">${song.title}</h3>
+                    <p class="text-sm text-gray-400 truncate">${song.album}</p>
+                </div>
+            `).join('');
+        }
+
+        // Funciones del reproductor
+        function playSong(index) {
+            state.currentSongIndex = index;
+            const song = state.songs[index];
+            
+            // Reproducir usando la URL del streaming (Spotify)
+            if (song.streamingServices?.spotify) {
+                state.audio.src = song.streamingServices.spotify;
+            }
+            
+            updatePlayerUI();
+            togglePlay();
+        }
+
+        function togglePlay() {
+            if (state.isPlaying) {
+                state.audio.pause();
+            } else {
+                state.audio.play();
+            }
+            state.isPlaying = !state.isPlaying;
+            updatePlayButton();
+        }
+
+        function updatePlayButton() {
+            const playButton = document.getElementById('play-button');
+            playButton.innerHTML = `<i class="fas fa-${state.isPlaying ? 'pause' : 'play'}"></i>`;
+        }
+
+        function updatePlayerUI() {
+            const song = state.songs[state.currentSongIndex];
+            document.getElementById('current-song-title').textContent = song.title;
+            document.getElementById('current-song-artist').textContent = song.album;
+            document.getElementById('current-song-image').src = song.coverUrl;  // Actualizar imagen
+        }
+
+        // Event Listeners
+        document.getElementById('play-button').addEventListener('click', togglePlay);
+        document.getElementById('prev-button').addEventListener('click', () => {
+            state.currentSongIndex = (state.currentSongIndex - 1 + state.songs.length) % state.songs.length;
+            playSong(state.currentSongIndex);
+        });
+        document.getElementById('next-button').addEventListener('click', () => {
+            state.currentSongIndex = (state.currentSongIndex + 1) % state.songs.length;
+            playSong(state.currentSongIndex);
+        });
+
+        // Actualizar la barra de progreso
+        state.audio.addEventListener('timeupdate', () => {
+            const progress = (state.audio.currentTime / state.audio.duration) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('current-time').textContent = formatTime(state.audio.currentTime);
+            document.getElementById('duration').textContent = formatTime(state.audio.duration);
+        });
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return "0:00";
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = Math.floor(seconds % 60);
+            return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+
+        // Inicializar la aplicación
+        fetchSongs();
+    </script>
+</body>
+</html>

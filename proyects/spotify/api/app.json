@@ -1,0 +1,281 @@
+{
+  "status": "success",
+  "songs": [
+    {
+      "id": 1,
+      "title": "El Triste",
+      "album": "Reencuentro",
+      "year": 1970,
+      "duration": "3:45",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273c8b2336f9b45f20edfbf49dc",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/7iJN89sYCnoDrm2HPPNUeH",
+        "youtube": "https://www.youtube.com/watch?v=E20G25SCAEg",
+        "appleMusic": "https://music.apple.com/mx/album/el-triste/1452682944?i=1452683088"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Gavilán o Paloma",
+      "album": "Lo Pasado, Pasado",
+      "year": 1977,
+      "duration": "4:20",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b2733ab813251f02af15804d8452",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/1QOkH3sYPLs57Gg9Dp1n8q",
+        "youtube": "https://www.youtube.com/watch?v=ZXPtXhqaY9k",
+        "appleMusic": "https://music.apple.com/mx/album/gavil%C3%A1n-o-paloma/1452682944?i=1452683089"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Lo Pasado, Pasado",
+      "album": "Lo Pasado, Pasado",
+      "year": 1978,
+      "duration": "3:30",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273f2d8f6b758a1920b20b2e495",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/2XDHmQWq7HzR8LyoAoLW3y",
+        "youtube": "https://www.youtube.com/watch?v=KmR6Iy8K1TA",
+        "appleMusic": "https://music.apple.com/mx/album/lo-pasado-pasado/1452682944?i=1452683090"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Almohada",
+      "album": "Mi Vida",
+      "year": 1976,
+      "duration": "4:00",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273f2d8f6b758a1920b20b2e495",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/4QVmYUF9tmYqghGZf3TJ2M",
+        "youtube": "https://www.youtube.com/watch?v=rRmW1pQehvM",
+        "appleMusic": "https://music.apple.com/mx/album/almohada/1452682944?i=1452683091"
+      }
+    },
+    {
+      "id": 5,
+      "title": "La Nave del Olvido",
+      "album": "Reencuentro",
+      "year": 1975,
+      "duration": "3:20",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b2732923891706de75053884676c",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/6z6ZUurNpNK8L5YVzW7kmk",
+        "youtube": "https://www.youtube.com/watch?v=hRHX7ffKPGk",
+        "appleMusic": "https://music.apple.com/mx/album/la-nave-del-olvido/1452682944?i=1452683092"
+      }
+    },
+    {
+      "id": 6,
+      "title": "El Amor Acaba",
+      "album": "Si Me Dejas Ahora",
+      "year": 1979,
+      "duration": "3:45",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273331e8b10825e9caffff16925",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/0X6peQJHxGtBSRQEFS1PXu",
+        "youtube": "https://www.youtube.com/watch?v=hQXmxhA7_0g",
+        "appleMusic": "https://music.apple.com/mx/album/el-amor-acaba/1452682944?i=1452683093"
+      }
+    },
+    {
+      "id": 7,
+      "title": "40 y 20",
+      "album": "40 y 20",
+      "year": 1982,
+      "duration": "3:50",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273dedbe9d8db9f64e075ae1764",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/1vYXn8fZGth3tLrMyUxlVj",
+        "youtube": "https://www.youtube.com/watch?v=KmR6Iy8K1TA",
+        "appleMusic": "https://music.apple.com/mx/album/40-y-20/1452682944?i=1452683094"
+      }
+    },
+    {
+      "id": 8,
+      "title": "Volcán",
+      "album": "Volcán",
+      "year": 1978,
+      "duration": "3:40",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273bde682ef05dd142729f214d9",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/2XDHmQWq7HzR8LyoAoLW3y",
+        "youtube": "https://www.youtube.com/watch?v=KmR6Iy8K1TA",
+        "appleMusic": "https://music.apple.com/mx/album/volc%C3%A1n/1452682944?i=1452683095"
+      }
+    },
+    {
+      "id": 9,
+      "title": "Si Me Dejas Ahora",
+      "album": "Si Me Dejas Ahora",
+      "year": 1979,
+      "duration": "3:30",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b2738aa0f3ac9e10d38c8e3331a2",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/4QVmYUF9tmYqghGZf3TJ2M",
+        "youtube": "https://www.youtube.com/watch?v=rRmW1pQehvM",
+        "appleMusic": "https://music.apple.com/mx/album/si-me-dejas-ahora/1452682944?i=1452683096"
+      }
+    },
+    {
+      "id": 10,
+      "title": "Querida",
+      "album": "Secretos",
+      "year": 1983,
+      "duration": "4:00",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b2735100e9c6bfd5f8962802f13b",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/6z6ZUurNpNK8L5YVzW7kmk",
+        "youtube": "https://www.youtube.com/watch?v=hRHX7ffKPGk",
+        "appleMusic": "https://music.apple.com/mx/album/querida/1452682944?i=1452683097"
+      }
+    },
+    {
+      "id": 11,
+      "title": "He Renunciado a Ti",
+      "album": "Mi Vida",
+      "year": 1982,
+      "duration": "3:35",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b2735100e9c6bfd5f8962802f13b",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/0X6peQJHxGtBSRQEFS1PXu",
+        "youtube": "https://www.youtube.com/watch?v=hQXmxhA7_0g",
+        "appleMusic": "https://music.apple.com/mx/album/he-renunciado-a-ti/1452682944?i=1452683098"
+      }
+    },
+    {
+      "id": 12,
+      "title": "Lo Que No Fue No Será",
+      "album": "Mi Vida",
+      "year": 1977,
+      "duration": "4:05",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b2735100e9c6bfd5f8962802f13b",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/1vYXn8fZGth3tLrMyUxlVj",
+        "youtube": "https://www.youtube.com/watch?v=KmR6Iy8K1TA",
+        "appleMusic": "https://music.apple.com/mx/album/lo-que-no-fue-no-ser%C3%A1/1452682944?i=1452683099"
+      }
+    },
+    {
+      "id": 13,
+      "title": "Amor Eterno",
+      "album": "Amor Eterno",
+      "year": 1984,
+      "duration": "4:15",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b2733bff4fd7d0797659ee73ff99",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/6V3KToPLH1X2hfP7lb8GRh",
+        "youtube": "https://www.youtube.com/watch?v=RBhUwzvB2yk",
+        "appleMusic": "https://music.apple.com/mx/album/amor-eterno/1452682944?i=1452683100"
+      }
+    },
+    {
+      "id": 14,
+      "title": "El Privilegio de Amar",
+      "album": "Amor Eterno",
+      "year": 1984,
+      "duration": "4:20",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b2733bff4fd7d0797659ee73ff99",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/3xwMvpkv0f2sDpaF5UNkFk",
+        "youtube": "https://www.youtube.com/watch?v=VvRRAeEmmfg",
+        "appleMusic": "https://music.apple.com/mx/album/el-privilegio-de-amar/1452682944?i=1452683101"
+      }
+    },
+    {
+      "id": 15,
+      "title": "Contigo Aprendí",
+      "album": "Mi Vida",
+      "year": 1985,
+      "duration": "4:05",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b2733bff4fd7d0797659ee73ff99",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/0sylhjNwSC8QzHfPtMgwhM",
+        "youtube": "https://www.youtube.com/watch?v=SRvBfW9gHFo",
+        "appleMusic": "https://music.apple.com/mx/album/contigo-aprendi/1452682944?i=1452683102"
+      }
+    },
+    {
+      "id": 16,
+      "title": "Piel de Azúcar",
+      "album": "Piel de Azúcar",
+      "year": 1982,
+      "duration": "3:50",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b27325dc66c2ea7faa2da5a0fa0f",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/0R6vZfQW9HpqD9FvT1V88d",
+        "youtube": "https://www.youtube.com/watch?v=fhZGMeU7fIU",
+        "appleMusic": "https://music.apple.com/mx/album/piel-de-azucar/1452682944?i=1452683103"
+      }
+    },
+    {
+      "id": 17,
+      "title": "El Triste (Versión en Vivo)",
+      "album": "En Vivo",
+      "year": 1984,
+      "duration": "5:00",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273c8b2336f9b45f20edfbf49dc",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/5KjrYjjCZZF5DXXmVAmT4f",
+        "youtube": "https://www.youtube.com/watch?v=jlAq7sC_jvc",
+        "appleMusic": "https://music.apple.com/mx/album/el-triste-en-vivo/1452682944?i=1452683104"
+      }
+    },
+    {
+      "id": 18,
+      "title": "Casi Te Envidio",
+      "album": "Mi Vida",
+      "year": 1980,
+      "duration": "3:30",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b2739e68e832027df6f2f61addf3",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/5DhWVsl34Eeh4gZ5jrPusD",
+        "youtube": "https://www.youtube.com/watch?v=4gMZHqEn2WI",
+        "appleMusic": "https://music.apple.com/mx/album/casi-te-envidio/1452682944?i=1452683105"
+      }
+    },
+    {
+      "id": 19,
+      "title": "No Me Vayas a Dejar",
+      "album": "40 y 20",
+      "year": 1983,
+      "duration": "4:10",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273dedbe9d8db9f64e075ae1764",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/5R4XfiTym4ZZy65c5v4uZX",
+        "youtube": "https://www.youtube.com/watch?v=bRtN50-ECNQ",
+        "appleMusic": "https://music.apple.com/mx/album/no-me-vayas-a-dejar/1452682944?i=1452683106"
+      }
+    },
+    {
+      "id": 20,
+      "title": "Te Lo Pido por Favor",
+      "album": "40 y 20",
+      "year": 1983,
+      "duration": "3:35",
+      "coverUrl": "https://i.scdn.co/image/ab67616d0000b273dedbe9d8db9f64e075ae1764",
+      "streamingServices": {
+        "spotify": "https://open.spotify.com/track/6gA5P0XgM8L6c1s9Z9XX90",
+        "youtube": "https://www.youtube.com/watch?v=lMG7FyJ8hP4",
+        "appleMusic": "https://music.apple.com/mx/album/te-lo-pido-por-favor/1452682944?i=1452683107"
+      }
+    }
+  ],
+  "playlists": [
+    {
+      "id": 1,
+      "name": "Éxitos de José José",
+      "description": "Los mejores éxitos del Príncipe de la Canción",
+      "coverUrl": "/playlists/exitos.jpg",
+      "songs": [1, 2, 5, 9, 15]
+    },
+    {
+      "id": 2,
+      "name": "Baladas Románticas",
+      "description": "Románticas, para el alma.",
+      "coverUrl": "/playlists/baladas.jpg",
+      "songs": [3, 6, 11, 18, 19]
+    }
+  ]
+}
