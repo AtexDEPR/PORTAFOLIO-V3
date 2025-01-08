@@ -35,20 +35,37 @@ git clone https://github.com/tu-usuario/portafolio.git
 
 portfolio/
 ├── index.html          (Página de inicio)
+
 ├── sobre.html          (Página "Sobre mí")
+
 ├── habilidades.html    (Página de habilidades)
+
 ├── proyectos.html      (Página de proyectos)
+
 ├── referencias.html    (Página de referencias)
+
 ├── contacto.html       (Página de contacto)
+
 ├── assets/
+
 │   ├── css/
+
 │   │   ├── styles.css  (Archivo CSS adicional para personalizaciones)
+
 │   ├── js/
+
 │   │   ├── main.js     (Scripts generales)
+
 │   ├── img/            (Carpeta de imágenes)
+
 │   │   ├── developer.jpg
+
 │   │   ├── proyectos/  (Imágenes de los proyectos)
+
 │   │   ├── referencias/ (Imágenes relacionadas con referencias)
+
 │   │   └── ...         (Otras imágenes)
+
 ├── CV.pdf              (CV descargable en PDF)
+
 └── README.md           (Instrucciones y detalles del proyecto)
