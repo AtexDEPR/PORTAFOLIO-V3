@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Población de Colombia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
+</head>
+<body class="bg-emerald-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-emerald-800 mb-2">Población de Colombia API</h1>
+            <p class="text-emerald-600">Busca información sobre departamentos, ciudades y municipios</p>
+        </header>
+
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 mb-8">
+            <div class="mb-4 relative">
+                <label for="searchInput" class="block text-emerald-700 font-medium mb-2">
+                    Ingresa un departamento, ciudad o municipio:
+                </label>
+                <input type="text" id="searchInput" 
+                    class="w-full px-4 py-2 border border-emerald-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    placeholder="Ej: Antioquia, Medellín, Guatapé">
+                <ul id="autocompleteList" class="absolute z-10 w-full bg-white border border-emerald-300 rounded-lg mt-1 max-h-60 overflow-y-auto hidden"></ul>
+            </div>
+        </div>
+
+        <div id="loader" class="hidden flex justify-center">
+            <div class="loader"></div>
+        </div>
+
+        <div id="results" class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 hidden">
+            <div id="errorMessage" class="text-red-500 text-center hidden"></div>
+            
+            <div id="mainResult" class="mb-6 hidden">
+                <h2 class="text-2xl font-bold text-emerald-800 mb-2" id="locationName"></h2>
+                <p class="text-lg text-emerald-700" id="populationInfo"></p>
+                <p class="text-emerald-600" id="departmentInfo"></p>
+            </div>
+
+            <div id="municipalitiesList" class="hidden">
+                <h3 class="text-xl font-bold text-emerald-800 mb-4">Municipios y Ciudades:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="municipalitiesGrid"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+html, body {
+  background-image: url('https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?cs=srgb&dl=pexels-souvenirpixels-417074.jpg&fm=jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+}
+
+#texto {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
