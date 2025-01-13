@@ -6,18 +6,45 @@
   <meta name="description" content="Explora los proyectos desarrollados por Daniel Esteban Pereira Rosas.">
   <title>Proyectos | Daniel Esteban Pereira Rosas</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <script src="./assets/js/main.js" defer></script>
+  <style>
+    .section-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    }
+    
+    .section-content.active {
+      max-height: 2000px;
+      transition: max-height 0.5s ease-in;
+    }
+
+    .rotate-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .rotate-icon.active {
+      transform: rotate(180deg);
+    }
+
+    .project-card {
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s ease-out;
+    }
+
+    .project-card.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
 </head>
 <body class="bg-gray-900 text-white">
   <header class="fixed w-full bg-gray-800 shadow-lg z-50 top-0">
     <nav class="container mx-auto flex justify-between items-center py-4 px-6">
       <a href="index.html" class="text-2xl font-bold">Daniel Pereira</a>
       
-      <!-- Botón hamburguesa visible en pantallas pequeñas -->
       <div class="menu-btn cursor-pointer text-3xl md:hidden" id="menu-btn">☰</div>
       
-      <!-- Menú de navegación -->
       <ul id="menu" class="hidden md:flex space-y-4 md:space-y-0 md:space-x-4 absolute top-16 left-0 md:relative md:top-0 md:left-0 w-full md:w-auto bg-gray-800 md:bg-transparent p-4 md:p-0">
         <li><a href="index.html" class="hover:text-blue-400">Inicio</a></li>
         <li><a href="sobre.html" class="hover:text-blue-400">Sobre mí</a></li>
@@ -28,90 +55,182 @@
     </nav>
   </header>
 
-  <main class="container mx-auto mt-20 p-6">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6">Proyectos</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Proyecto 1 -->
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
-        <img src="./assets/img/create-your-web-page-fast-responsive-animations-customization.webp" alt="Proyecto 1" class="rounded-md">
-        <h2 class="mt-4 text-xl font-bold">Landing Page de Ventas</h2>
-        <p class="text-sm mt-2">Landing page de ventas para una marca de ropa, optimizada para la conversión y diseño atractivo.<br> <strong>Tecnologías:</strong> HTML, CSS (Tailwind), JavaScript.</p>
-        <a href="https://ereboscol.netlify.app/" rel="noopener noreferrer" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
-
+  <main class="container mx-auto mt-24 p-6">
+    <h1 class="text-4xl md:text-5xl font-bold mb-8">Proyectos</h1>
+    
+    <!-- Videojuegos Section -->
+    <div class="mb-6">
+      <button class="w-full bg-gray-800 p-4 rounded-lg flex justify-between items-center hover:bg-gray-700 transition-colors" data-section="games">
+        <h2 class="text-2xl font-bold">Videojuegos</h2>
+        <svg class="w-6 h-6 rotate-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+      <div class="section-content" data-content="games">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+          <!-- Tetris -->
+          <div class="project-card p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
+            <img src="./assets/img/tetris.webp" alt="Tetris" class="rounded-md w-full h-48 object-cover">
+            <h3 class="mt-4 text-xl font-bold">Tetris</h3>
+            <p class="text-sm mt-2">Versión clásica de Tetris con sistema de puntuación.</p>
+            <a href="./proyects/tetris/index.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+          </div>
+          <!-- Tres en Raya -->
+          <div class="project-card p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
+            <img src="./assets/img/tres-en-raya.png" alt="Tres en Raya" class="rounded-md w-full h-48 object-cover">
+            <h3 class="mt-4 text-xl font-bold">Tres en Raya</h3>
+            <p class="text-sm mt-2">Juego clásico de Tres en Raya para dos jugadores.</p>
+            <a href="./proyects/tres-en-raya/tres-en-raya.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+          </div>
+        </div>
+      </div>
     </div>
-    
-      <!-- Proyecto 2 -->
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
-        <img src="./assets/img/tres-en-raya.png" alt="Proyecto 2" class="rounded-md">
-        <h2 class="mt-4 text-xl font-bold">Tres en raya</h2>
-        <p class="text-sm mt-2">Juego de <strong>Tres en Raya (Tic-Tac-Toe)</strong> 1vs1 con marcador. Permite a dos jugadores alternar turnos con 'X' y 'O', mostrando el estado del juego y las victorias. <br> <strong>Tecnologías:</strong> HTML, CSS (Tailwind), JavaScript.</p>
 
-        <a href="./proyects/tres-en-raya/tres-en-raya.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+    <!-- Landing Pages Section -->
+    <div class="mb-6">
+      <button class="w-full bg-gray-800 p-4 rounded-lg flex justify-between items-center hover:bg-gray-700 transition-colors" data-section="landing">
+        <h2 class="text-2xl font-bold">Landing Pages</h2>
+        <svg class="w-6 h-6 rotate-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+      <div class="section-content" data-content="landing">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+          <!-- Landing Page de Ventas -->
+          <div class="project-card p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
+            <img src="./assets/img/create-your-web-page-fast-responsive-animations-customization.webp" alt="Landing Page" class="rounded-md w-full h-48 object-cover">
+            <h3 class="mt-4 text-xl font-bold">Erebos</h3>
+            <p class="text-sm mt-2">Landing page venta de ropa.</p>
+            <a href="https://ereboscol.netlify.app/" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+          </div>
+          <!-- Landing Page de Ventas -->
+          <div class="project-card p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
+            <img src="./assets/img/nexoweb.webp" alt="Landing Page" class="rounded-md w-full h-48 object-cover">
+            <h3 class="mt-4 text-xl font-bold">NexoWeb</h3>
+            <p class="text-sm mt-2">Landing page venta de paginas web.</p>
+            <a href="https://nexweb.netlify.app/" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+          </div>
+        </div>
       </div>
-      <!-- Proyecto 3 -->
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
-        <img src="./assets/img/Fin-de-ano.webp" alt="Proyecto 3" class="rounded-md">
-        <h2 class="mt-4 text-xl font-bold">Fin de año</h2>
-        <p class="text-sm mt-2">Cuenta regresiva dinámica al Año Nuevo con animaciones, cambios mensuales y evento especial a medianoche. <br> <strong>Tecnologías:</strong> HTML, CSS (Tailwind), JavaScript.</p>
+    </div>
 
-
-        <a href="./proyects/new-year/año-nuevo.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+    <!-- Herramientas Section -->
+    <div class="mb-6">
+      <button class="w-full bg-gray-800 p-4 rounded-lg flex justify-between items-center hover:bg-gray-700 transition-colors" data-section="tools">
+        <h2 class="text-2xl font-bold">Herramientas</h2>
+        <svg class="w-6 h-6 rotate-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+      <div class="section-content" data-content="tools">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+          <!-- Youtube Download -->
+          <div class="project-card p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
+            <img src="./assets/img/Descargas-youtube.webp" alt="Youtube Download" class="rounded-md w-full h-48 object-cover">
+            <h3 class="mt-4 text-xl font-bold">Youtube Download</h3>
+            <p class="text-sm mt-2">Descarga videos de YouTube en diferentes formatos.</p>
+            <a href="./proyects/youtube-descargas/index.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+          </div>
+          <!-- Grabar Pantalla -->
+          <div class="project-card p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
+            <img src="./assets/img/Grabar-pantalla.webp" alt="Grabar Pantalla" class="rounded-md w-full h-48 object-cover">
+            <h3 class="mt-4 text-xl font-bold">Grabar Pantalla</h3>
+            <p class="text-sm mt-2">Graba tu pantalla y guarda el video.</p>
+            <a href="./proyects/grabar-pantalla/index.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+          </div>
+          <!-- Gestor de Tareas -->
+          <div class="project-card p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
+            <img src="./assets/img/tareas.webp" alt="Gestor de Tareas" class="rounded-md w-full h-48 object-cover">
+            <h3 class="mt-4 text-xl font-bold">Gestor de Tareas</h3>
+            <p class="text-sm mt-2">Organiza y gestiona tus tareas diarias.</p>
+            <a href="./proyects/Tareas/index.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+          </div>
+          <!-- Spotify -->
+          <div class="project-card p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
+            <img src="./assets/img/Spotify by ATEX.webp" alt="Gestor de Tareas" class="rounded-md w-full h-48 object-cover">
+            <h3 class="mt-4 text-xl font-bold">Spotify</h3>
+            <p class="text-sm mt-2">Escucha la musica que escucha Daniel Pereira.</p>
+            <a href="./proyects/spotify/index.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <!-- Proyecto 4 -->
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
-        <img src="./assets/img/tetris.webp" alt="Proyecto 4" class="rounded-md">
-        <h2 class="mt-4 text-xl font-bold">Tetris</h2>
-        <p class="text-sm mt-2">Versión clásica de <strong>Tetris</strong>, donde el objetivo es completar líneas con piezas que caen. El marcador muestra el puntaje total. <br> <strong>Tecnologías:</strong> HTML, CSS (Tailwind), JavaScript.</p>
-        <a href="./proyects/tetris/index.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+    <!-- Animaciones Section -->
+    <div class="mb-6">
+      <button class="w-full bg-gray-800 p-4 rounded-lg flex justify-between items-center hover:bg-gray-700 transition-colors" data-section="animations">
+        <h2 class="text-2xl font-bold">Animaciones</h2>
+        <svg class="w-6 h-6 rotate-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+      <div class="section-content" data-content="animations">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+          <!-- Fin de Año -->
+          <div class="project-card p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
+            <img src="./assets/img/Fin-de-ano.webp" alt="Fin de Año" class="rounded-md w-full h-48 object-cover">
+            <h3 class="mt-4 text-xl font-bold">Fin de Año</h3>
+            <p class="text-sm mt-2">Cuenta regresiva animada para fin de año.</p>
+            <a href="./proyects/new-year/año-nuevo.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
+          </div>
+        </div>
       </div>
-      <!-- Proyecto 5 -->
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
-        <img src="./assets/img/Descargas-youtube.webp" alt="Proyecto 5" class="rounded-md">
-        <h2 class="mt-4 text-xl font-bold">Youtube-Download</h2>
-        <p class="text-sm mt-2">Aplicación para descargar videos de YouTube en formato video o música, simplemente pegando la URL del video. <br> <strong>Tecnologías:</strong> HTML, CSS (Tailwind), JavaScript.</p>
-
-
-        <a href="./proyects/youtube-descargas/index.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
-      </div>
-      <!-- Proyecto 6 -->
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
-        <img src="./assets/img/Grabar-pantalla.webp" alt="Proyecto 6" class="rounded-md">
-        <h2 class="mt-4 text-xl font-bold">Grabar-pantalla</h2>
-        <p class="text-sm mt-2">Aplicación que permite grabar cualquier área de la pantalla de tu ordenador y descargar la grabación en formato de video. <br> <strong>Tecnologías:</strong> HTML, CSS (Tailwind), JavaScript.</p>
-
-
-        <a href="./proyects/grabar-pantalla/index.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
-      </div>
-      
-            <!-- Proyecto 7 -->
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
-        <img src="./assets/img/Colombia-API.webp" alt="Proyecto 7" class="rounded-md">
-        <h2 class="mt-4 text-xl font-bold">Colombia-API</h2>
-        <p class="text-sm mt-2">Permite buscar departamentos y municipios de Colombia, mostrando su población total. <br> <strong>Tecnologías:</strong> HTML, CSS (Tailwind), JavaScript, API de Colombia.</p>
-
-        <a href="./proyects/Colombia-API/index.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
-      </div>
-      <!-- Proyecto 8 -->
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
-        <img src="./assets/img/Spotify by ATEX.webp" alt="Proyecto 8" class="rounded-md">
-        <h2 class="mt-4 text-xl font-bold">Spotify-By-Atex</h2>
-        <p class="text-sm mt-2">Clon de Spotify para escuchar y gestionar mis canciones favoritas.<br> <strong>Tecnologías:</strong> HTML, CSS (Tailwind), JavaScript, API de Spotify.</p>
-        
-
-        <a href="./proyects/spotify/index.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
-      </div>
-      <!-- Proyecto 9 -->
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition-all">
-        <img src="./assets/img/tareas.webp" alt="Proyecto 9" class="rounded-md">
-        <h2 class="mt-4 text-xl font-bold">Gestor-Tareas</h2>
-      <p class="text-sm mt-2">Aplicación para agregar, marcar como completadas y eliminar tareas de manera sencilla. <br> <strong>Tecnologías:</strong> HTML, CSS (Tailwind), JavaScript.</p>
-
-
-        <a href="./proyects/Tareas/index.html" target="_blank" class="mt-4 inline-block bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600 transition-all">Ver más</a>
-      </div>
-    
     </div>
   </main>
+
+  <script>
+    // Toggle menu for mobile
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+    
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Section toggle functionality
+    const sectionButtons = document.querySelectorAll('[data-section]');
+    
+    sectionButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const sectionName = button.getAttribute('data-section');
+        const content = document.querySelector(`[data-content="${sectionName}"]`);
+        const icon = button.querySelector('.rotate-icon');
+        
+        // Toggle active class for content
+        content.classList.toggle('active');
+        icon.classList.toggle('active');
+        
+        // Animate project cards when section is opened
+        if (content.classList.contains('active')) {
+          const cards = content.querySelectorAll('.project-card');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('show');
+            }, index * 100);
+          });
+        } else {
+          const cards = content.querySelectorAll('.project-card');
+          cards.forEach(card => {
+            card.classList.remove('show');
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for initial animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
